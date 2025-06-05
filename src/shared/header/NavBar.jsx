@@ -53,14 +53,24 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                 <NavLink
-                                to="/myArticles"
-                                className={({ isActive }) =>
-                                    isActive ? "text-cyan-900 font-bold" : ""
-                                }
-                            >
-                                My Articles
-                            </NavLink>
+                                <NavLink
+                                    to="/myArticles"
+                                    className={({ isActive }) =>
+                                        isActive ? "text-cyan-900 font-bold" : ""
+                                    }
+                                >
+                                    My Articles
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/aboutUs"
+                                    className={({ isActive }) =>
+                                        isActive ? "text-cyan-900 font-bold" : ""
+                                    }
+                                >
+                                    About Us
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
@@ -109,6 +119,16 @@ const Navbar = () => {
                                 My Articles
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/aboutUs"
+                                className={({ isActive }) =>
+                                    isActive ? "text-cyan-900 font-bold" : ""
+                                }
+                            >
+                                About Us
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
                 <div className="navbar-end space-x-3">
@@ -120,10 +140,42 @@ const Navbar = () => {
                         user ? (
                             <div className='flex gap-5'>
 
-                                <button onClick={logOut} className='btn  btn-info rounded-4xl'>LogOut</button>
 
-                                <button className="avater rounded-full" title={user?.displayName
-                                }><img className='w-8 rounded-full' src={`${user.photoURL}`} alt="" /></button>
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img className='w-8 rounded-full' src={`${user.photoURL}`} alt="" />
+                                        </div>
+                                    </div>
+                                    <ul
+                                        tabIndex={0}
+                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 space-y-2 shadow">
+                                        <li>
+                                            <NavLink
+                                                to="/myArticles"
+                                                className={({ isActive }) =>
+                                                    isActive ? "text-cyan-900 font-bold" : ""
+                                                }
+                                            >
+                                                My Articles
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                to="/postArticle"
+                                                className={({ isActive }) =>
+                                                    isActive ? "text-cyan-900 font-bold" : ""
+                                                }
+                                            >
+                                                Post Article
+                                            </NavLink>
+                                        </li>
+                                        <li><button onClick={logOut} className='btn  btn-info rounded-4xl'>LogOut</button></li>
+                                    </ul>
+                                </div>
+
+                                {/* <button className="avater rounded-full" title={user?.displayName
+                                }><img className='w-8 rounded-full' src={`${user.photoURL}`} alt="" /></button> */}
 
                             </div>
                         ) : (

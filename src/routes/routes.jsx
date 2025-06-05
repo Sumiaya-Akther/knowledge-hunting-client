@@ -10,6 +10,7 @@ import Register from "../pages/register/Register";
 import AllArticles from "../pages/allArticles/AllArticles";
 import PostArticle from "../pages/postArticle/PostArticle";
 import MyArticles from "../pages/myArticles/MyArticles";
+import AboutUs from "../pages/about/AboutUs";
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
             {
                 path: "/myArticles",
                 Component: MyArticles
+            },
+            {
+                path: "/aboutUs",
+                Component: AboutUs
             }
         ]
 
