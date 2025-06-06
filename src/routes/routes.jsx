@@ -12,6 +12,7 @@ import PostArticle from "../pages/postArticle/PostArticle";
 import MyArticles from "../pages/myArticles/MyArticles";
 import AboutUs from "../pages/about/AboutUs";
 import axios from "axios";
+import Articles from "../pages/Ariticles/Articles";
 
 export const router = createBrowserRouter([
     {
@@ -26,10 +27,16 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
+                // path: "/allArticles",
+                // Component: AllArticles,
+                // loader: () =>axios(`${import.meta.env.VITE_API_URL}/articles`),
+                // hydrateFallbackElement: <Loading></Loading>
+
+            },
+            {
                 path: "/allArticles",
-                Component: AllArticles,
-                loader: () =>axios(`${import.meta.env.VITE_API_URL}/articles`),
-                hydrateFallbackElement: <Loading></Loading>
+                 Component: Articles,
+               
 
             },
             {
