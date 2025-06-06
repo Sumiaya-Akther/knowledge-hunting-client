@@ -1,16 +1,100 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
+import { useLocation, useNavigate } from 'react-router';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import Loading from '../../components/loading/Loading';
 
 const PostArticle = () => {
 
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [loading, setLoading] = useState(false);
+
+    const handlePostArticle = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+
+        const title = form.title.value;
+        const content = form.content.value;
+        const category = form.category.value;
+        const tags = form.tags.value.split(',').map(tag => tag.trim()).filter(Boolean);
+        const thumbnail = form.thumbnail.value;
+        const date = new Date().toLocaleString();
+        const author_name = form.author_name.value;
+        const author_email = form.author_email.value;
+
+        const articleData = {
+            title,
+            content,
+            category,
+            tags,
+            thumbnail,
+            date,
+            author_id: user?.uid,
+            author_name,
+            author_email,
+            author_photo: user?.photoURL,
+            likedBy: [],
+        };
+
+        console.log(articleData);
+        setLoading(true);
+
+        //save articles to the server
+
+        // fetch (`${import.meta.env.VITE_API_URL}/articles`,{
+        //     method:'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body:JSON.stringify(articleData),
+        // }).then(res=> res.json())
+        // .then(data => {
+        //     console.log(data)
+        // })
+
+
+        axios.post(`${import.meta.env.VITE_API_URL}/articles`, articleData)
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Article Created Successfully!",
+                        icon: "success",
+                        draggable: true
+                    });
+                    form.reset();
+                    navigate(`${location.state ? location.state : "/"}`);
+                }
+            })
+            .catch((error) => {
+                if (error) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong please try again!",
+                    });
+                }
+            })
+
+            .finally(() => {
+                setLoading(false); 
+            });
+
+
+    };
+
+     if (loading){
+        return <Loading></Loading>
+    }
 
     return (
         <section className="max-w-4xl mx-auto px-4 py-10">
             <div className="bg-cyan-600 shadow-lg rounded-xl p-6 sm:p-10 border">
                 <h2 className="text-3xl font-bold text-center mb-8">Post a New Article</h2>
 
-                <form className="grid grid-cols-1 gap-6">
+                <form onSubmit={handlePostArticle} className="grid grid-cols-1 gap-6">
                     {/* Title */}
                     <div>
                         <label className="block mb-1 font-semibold">Title</label>
