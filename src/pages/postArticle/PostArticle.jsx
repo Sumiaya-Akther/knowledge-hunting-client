@@ -58,7 +58,7 @@ const PostArticle = () => {
 
         axios.post(`${import.meta.env.VITE_API_URL}/articles`, articleData)
             .then(data => {
-                if (data.insertedId) {
+                if (data.data.insertedId) {
                     Swal.fire({
                         title: "Article Created Successfully!",
                         icon: "success",
