@@ -13,6 +13,7 @@ import MyArticles from "../pages/myArticles/MyArticles";
 import AboutUs from "../pages/about/AboutUs";
 import axios from "axios";
 import Articles from "../pages/Ariticles/Articles";
+import ArticleDetails from "../pages/articleDetails/ArticleDetails";
 
 export const router = createBrowserRouter([
     {
@@ -36,8 +37,12 @@ export const router = createBrowserRouter([
             {
                 path: "/allArticles",
                  Component: Articles,
-               
-
+            },
+            {
+                path: "/article/:id",
+                Component: ArticleDetails,
+                loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/article/${params.id}`),
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/postArticle",
