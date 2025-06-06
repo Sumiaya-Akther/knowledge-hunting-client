@@ -16,7 +16,7 @@ const Articles = () => {
             try {
                 setLoading(true);
                 // API call with optional category query param
-                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/articles`, {
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/articles`, {
                     params: selectedCategory !== 'All' ? { category: selectedCategory } : {},
                 });
                 const fetchedArticles = res.data.data;
@@ -45,7 +45,7 @@ const Articles = () => {
     return (
         <div className="p-6">
             {/* Category filter buttons */}
-            <div className="flex justify-center gap-3 mb-6">
+            <div className="flex justify-center overflow-x-auto gap-3 mb-6">
                 {categories.map(category => (
                     <button
                         key={category}
