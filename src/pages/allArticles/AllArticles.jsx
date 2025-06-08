@@ -7,9 +7,6 @@ const AllArticles = () => {
     // const [articles, setArticles] = useState(data?.data || []);
     console.log(articles);
 
-
-
-
     return (
        <div>
         {/* <h1 className='text-4xl font-bold my-10 text-center'>All Article</h1> */}

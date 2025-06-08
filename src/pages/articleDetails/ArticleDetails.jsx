@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useLoaderData } from 'react-router';
 import { FaRegHeart, FaHeart, FaRegComment } from "react-icons/fa";
 import { AuthContext } from '../../provider/AuthProvider';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ArticleDetails = () => {
     const { data: article } = useLoaderData();
     const { user } = useContext(AuthContext);
-    console.log(article);
-    const navigate = useNavigate();
+    //console.log(article);
+    // const navigate = useNavigate();
     const [liked, setLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(article.likedBy.length);
     const [comments, setComments] = useState([]);
@@ -16,26 +18,39 @@ const ArticleDetails = () => {
     const handleLike = () => {
         setLiked(!liked);
         setLikesCount((prev) => prev + (liked ? -1 : 1));
-        // TODO: send like/unlike to backend with article._id and user.uid
+
     };
 
 
-    const handleCommentPost = () => {
+    const handleCommentPost = async () => {
         if (!user || !newComment.trim()) return;
-        const commentObj = {
-            text: newComment,
-            author: {
-                name: user.displayName,
-                photo: user.photoURL,
-                uid: user.uid,
-            },
-            date: new Date().toLocaleString(),
-        };
-        setComments([commentObj, ...comments]);
-        setNewComment("");
 
-        // TODO: send comment to backend with article._id and commentObj
+        const commentData = {
+            article_id: article._id, // important: match backend field
+            user_id: user.uid,
+            user_name: user.displayName,
+            user_photo: user.photoURL,
+            comment: newComment.trim(),
+        };
+
+        try {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/comments`, commentData);
+
+            if (res.data.insertedId) {
+                Swal.fire({
+                    title: "Successfully commented the post!",
+                    icon: "success",
+                    draggable: true
+                });
+                setComments([commentData, ...comments]);
+                setNewComment("");
+            }
+        } catch (error) {
+            console.error("Error posting comment:", error);
+        }
     };
+
+
 
     return (
         <div className="max-w-3xl mx-auto p-4 rounded-2xl shadow-lg bg-blue-300 dark:bg-gray-900">
@@ -94,10 +109,10 @@ const ArticleDetails = () => {
             <div className="mt-6 space-y-4">
                 {comments.map((cmt, idx) => (
                     <div key={idx} className="flex gap-3 items-start bg-gray-50 dark:bg-gray-800 p-3 rounded-xl">
-                        <img src={cmt.author.photo} alt="User" className="w-8 h-8 rounded-full" />
+                        <img src={cmt.user_photo} alt="User" className="w-8 h-8 rounded-full" />
                         <div>
-                            <p className="font-semibold text-gray-800 dark:text-white">{cmt.author.name}</p>
-                            <p className="text-sm text-gray-600 dark:text-gray-300">{cmt.text}</p>
+                            <p className="font-semibold text-gray-800 dark:text-white">{cmt.user_name}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">{cmt.comment}</p>
                             <p className="text-xs text-gray-400 mt-1">{cmt.date}</p>
                         </div>
                     </div>
