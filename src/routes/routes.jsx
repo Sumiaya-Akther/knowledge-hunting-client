@@ -50,7 +50,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/myArticles",
-                Component: MyArticles
+                Component: MyArticles,
+                // loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/my-articles/${params.email}`),
+                // hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/aboutUs",

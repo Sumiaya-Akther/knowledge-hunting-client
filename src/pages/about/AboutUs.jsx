@@ -2,7 +2,8 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-          <div className="min-h-screen p-8 bg-gray-200 rounded-2xl dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-white px-4 py-10">
+         <div className='p-5'>
+             <div className="min-h-screen bg-gray-200 rounded-2xl dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-white px-4 py-10">
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <h1 className="text-4xl font-bold text-center mb-6">About Us</h1>
@@ -78,6 +79,7 @@ const AboutUs = () => {
         </section>
       </div>
     </div>
+         </div>
     );
 };
 

@@ -16,7 +16,7 @@ const Footer = () => {
                 <nav>
                     <ul className="flex space-x-8 text-lg font-medium">
                         <li>
-                            <Link to='#' className="hover:text-cyan-400 transition-colors">
+                            <Link to='/aboutUs' className="hover:text-cyan-400 transition-colors">
                                 About Us
                             </Link>
                         </li>
