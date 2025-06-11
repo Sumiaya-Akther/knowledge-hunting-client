@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router';
 
 const AllArticles = () => {
     const data = useLoaderData();
-    const articles = data?.data;
+    const articles = data?.data.data;
     // const [articles, setArticles] = useState(data?.data || []);
     console.log(articles);
 

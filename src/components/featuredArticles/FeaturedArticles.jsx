@@ -29,12 +29,12 @@ const FeaturedArticles = () => {
     }
 
     return (
-        <div className='my-20 px-4'>
+        <div className='my-20'>
             <h2 className="text-3xl md:text-4xl 
-              font-bold mb-12 text-cyan-700 text-center">🌟 Featured Hobby Groups</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-6 gap-4">
+              font-bold mb-12 text-cyan-700 text-center">🌟 Featured Articles</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-6 gap-8">
                 {articles.map(article => (
-                    <div key={article._id} className="rounded-xl shadow-md p-2 mb-5 bg-blue-300 sm:w-96 dark:bg-gray-50 dark:text-gray-800">
+                    <div key={article._id} className="rounded-xl shadow-md p-2 mb-5 bg-blue-300  dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
                         <img src={article.author_photo
@@ -42,8 +42,7 @@ const FeaturedArticles = () => {
                         <div className="-space-y-1">
                             <h2 className="text-sm font-semibold leading-none">{article.author_name
                             }</h2>
-                            <span className="inline-block text-xs leading-none dark:text-gray-600">{article.date
-                            }</span>
+                            <span className="inline-block text-xs leading-none dark:text-gray-600"> {new Date(article.date).toLocaleDateString()}</span>
                         </div>
                     </div>
                 </div>

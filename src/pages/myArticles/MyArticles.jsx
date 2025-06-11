@@ -4,6 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import UpdateData from '../../components/updateData/UpdateData';
 import Loading from '../../components/loading/Loading';
+import toast from 'react-hot-toast';
 
 
 const MyArticles = () => {
@@ -15,8 +16,6 @@ const MyArticles = () => {
     // console.log(articles);
     const [loading, setLoading] = useState(true);
     const [selectedArticle, setSelectedArticle] = useState(null);
-
-
 
 
     useEffect(() => {
@@ -79,12 +78,11 @@ const MyArticles = () => {
         const form = e.target;
 
         const updatedArticle = {
-            articleId: selectedArticle._id, // ✅ Backend expects `groupId`
+            articleId: selectedArticle._id, //Backend expects `groupId`
             title: form.title.value,
             content: form.content.value,
             category: form.category.value,
             tags: form.tags.value.split(',').map(tag => tag.trim()),
-
             thumbnail: form.thumbnail.value,
         };
 
@@ -95,18 +93,20 @@ const MyArticles = () => {
             );
 
             if (res.data.modifiedCount > 0) {
-                // ✅ Update frontend state without reload
+                //  Update frontend state without reload
                 setArticles((prevArticles) =>
                     prevArticles.map((a) =>
                         a._id === selectedArticle._id ? { ...a, ...updatedArticle } : a
                     )
                 );
-
-                Swal.fire("Updated!", "Article updated successfully.", "success");
+                toast.success('Article updated successfully!');
+                //Swal.fire("Updated!", "Article updated successfully.", "success");
+                document.getElementById('update_modal').close()
                 setSelectedArticle(null);
             }
         } catch (err) {
-            Swal.fire("Error", "Update failed.", "error");
+            toast.error('Update failed!');
+            //Swal.fire("Error", "Update failed.", "error");
         }
     };
 
@@ -167,13 +167,6 @@ const MyArticles = () => {
                                 <h2 className="text-2xl font-bold text-center mb-6">Update Article</h2>
 
                                 <UpdateData selectedArticle={selectedArticle} handleUpdateSubmit={handleUpdateSubmit}></UpdateData>
-
-                                {/* Close Button */}
-                                <div className="modal-action mt-4">
-                                    <form method="dialog">
-                                        <button className="btn">Close</button>
-                                    </form>
-                                </div>
                             </div>
                         </dialog>
 

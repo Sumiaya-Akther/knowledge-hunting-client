@@ -14,6 +14,8 @@ import AboutUs from "../pages/about/AboutUs";
 import axios from "axios";
 import Articles from "../pages/Ariticles/Articles";
 import ArticleDetails from "../pages/articleDetails/ArticleDetails";
+import Category from "../pages/category/category";
+
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +27,7 @@ export const router = createBrowserRouter([
                 index: true,
                 path: "/",
                 Component: Home,
+                loader: () =>axios(`${import.meta.env.VITE_API_URL}/articles`),
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
@@ -37,6 +40,12 @@ export const router = createBrowserRouter([
             {
                 path: "/allArticles",
                  Component: Articles,
+            },
+            {
+               path: "/category/:categoryName",
+               Component: Category,
+               loader: ({params}) =>axios.get(`${import.meta.env.VITE_API_URL}/article/category/${params.categoryName}`),
+               hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/article/:id",
