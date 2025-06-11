@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const Caterogirs = ({data}) => {
     
    const articles = data?.data.data;
-   console.log(articles);
+  // console.log(articles);
    
     return (
         <div className='my-20 mb- px-4'>

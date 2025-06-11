@@ -99,14 +99,14 @@ const MyArticles = () => {
                         a._id === selectedArticle._id ? { ...a, ...updatedArticle } : a
                     )
                 );
-                toast.success('Article updated successfully!');
+                  toast.success('Article updated successfully!');
+                   document.getElementById('update_modal').close()
                 //Swal.fire("Updated!", "Article updated successfully.", "success");
-                document.getElementById('update_modal').close()
                 setSelectedArticle(null);
             }
         } catch (err) {
-            toast.error('Update failed!');
-            //Swal.fire("Error", "Update failed.", "error");
+           // Swal.fire("Error", "Update failed.", "error");
+           toast.error('Update failed!');
         }
     };
 
@@ -167,6 +167,13 @@ const MyArticles = () => {
                                 <h2 className="text-2xl font-bold text-center mb-6">Update Article</h2>
 
                                 <UpdateData selectedArticle={selectedArticle} handleUpdateSubmit={handleUpdateSubmit}></UpdateData>
+
+                                {/* Close Button */}
+                                <div className="modal-action mt-4">
+                                    <form method="dialog">
+                                        <button className="btn">Close</button>
+                                    </form>
+                                </div>
                             </div>
                         </dialog>
 
