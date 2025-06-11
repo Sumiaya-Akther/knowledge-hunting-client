@@ -2,8 +2,8 @@ import React from 'react';
 import { useLoaderData, useParams } from "react-router";
 
 const Category = () => {
-     const { data } = useLoaderData();
-   const articles = data || [];
+     const data = useLoaderData();
+   const articles = data?.data?.data || [];
     return (
             <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Articles in this Category</h2>

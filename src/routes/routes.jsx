@@ -15,6 +15,7 @@ import axios from "axios";
 import Articles from "../pages/Ariticles/Articles";
 import ArticleDetails from "../pages/articleDetails/ArticleDetails";
 import Category from "../pages/category/category";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -55,11 +56,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/postArticle",
-                Component: PostArticle
+                element:<PrivateRoute>
+                    <PostArticle></PostArticle>
+                </PrivateRoute> 
             },
             {
                 path: "/myArticles",
-                Component: MyArticles,
+                element: <PrivateRoute>
+                    <MyArticles></MyArticles>
+                </PrivateRoute>
                 // loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/my-articles/${params.email}`),
                 // hydrateFallbackElement: <Loading></Loading>
             },
