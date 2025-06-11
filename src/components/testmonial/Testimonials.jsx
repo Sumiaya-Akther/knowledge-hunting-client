@@ -24,10 +24,10 @@ const testimonials = [
 
 const Testimonials = () => {
     return (
-            <section className=" py-16 px-4 md:px-20">
+            <section className=" py-16">
       <h2 className="text-3xl md:text-4xl 
               font-bold mb-12 text-cyan-700 text-center">
-        What Our Users Say
+       🌟 What Our Users Say
       </h2>
       <div className="grid md:grid-cols-3 gap-8">
         {testimonials.map((t, index) => (
