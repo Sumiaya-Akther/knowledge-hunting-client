@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
             {
                path: "/category/:categoryName",
                Component: Category,
-               loader: ({params}) =>axios.get(`${import.meta.env.VITE_API_URL}/article/category/${params.categoryName}`),
+               loader: ({params}) =>axios.get(`${import.meta.env.VITE_API_URL}/articles/category/${params.categoryName}`),
                hydrateFallbackElement: <Loading></Loading>
             },
             {

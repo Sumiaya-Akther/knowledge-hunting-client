@@ -78,7 +78,7 @@ const MyArticles = () => {
         const form = e.target;
 
         const updatedArticle = {
-            articleId: selectedArticle._id, //Backend expects `groupId`
+            articleId: selectedArticle._id, //Backend expects `articleId`
             title: form.title.value,
             content: form.content.value,
             category: form.category.value,
@@ -118,10 +118,13 @@ const MyArticles = () => {
 
     return (
         <div>
-            <h2 className="text-2xl font-bold mb-4 text-center">My Articles</h2>
+            <h2 className="text-3xl font-bold mb-10 text-center">My Articles</h2>
             {
                 articles.length === 0 ? (
-                    <p className="text-center">You haven’t created any groups yet.</p>
+                    <div className='p-20 rounded-2xl bg-cyan-500'>
+                        <p className="text-center font-semibold">You haven’t created any groups yet.</p>
+                    </div>
+
                 ) : (
 
                     <div>

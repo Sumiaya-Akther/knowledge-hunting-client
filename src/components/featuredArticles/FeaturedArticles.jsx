@@ -23,7 +23,7 @@ const FeaturedArticles = () => {
                 console.error("Failed to fetch featured articles:", error);
                 setLoading(false);
             });
-    }, [articles]);
+    }, []);
 
     if (loading) {
         return <Loading></Loading>
