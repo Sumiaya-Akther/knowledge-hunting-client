@@ -21,7 +21,7 @@ const PostArticle = () => {
         const category = form.category.value;
         const tags = form.tags.value.split(',').map(tag => tag.trim()).filter(Boolean);
         const thumbnail = form.thumbnail.value;
-        const date = new Date().toLocaleString();
+        const date = new Date().toISOString();
         const author_name = form.author_name.value;
         const author_email = form.author_email.value;
 

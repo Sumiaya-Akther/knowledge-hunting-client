@@ -33,23 +33,15 @@ const FeaturedArticles = () => {
 
     return (
             <div className="my-20">
-      <motion.h2
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl font-bold mb-12 text-cyan-700 text-center"
+      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-cyan-700 text-center"
       >
         🌟 Featured Articles
-      </motion.h2>
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-6 gap-8">
-        {articles.map((article, index) => (
-          <motion.div
+        {articles.map((article) => (
+          <div
             key={article._id}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            viewport={{ once: true }}
             className="rounded-xl shadow-md p-2 mb-5 bg-blue-300 dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex items-center justify-between p-3">
@@ -95,7 +87,7 @@ const FeaturedArticles = () => {
                 </motion.button>
               </Link>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

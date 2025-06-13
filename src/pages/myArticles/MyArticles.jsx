@@ -5,35 +5,36 @@ import Swal from 'sweetalert2';
 import UpdateData from '../../components/updateData/UpdateData';
 import Loading from '../../components/loading/Loading';
 import toast from 'react-hot-toast';
+import { useLoaderData } from 'react-router';
 
 
 const MyArticles = () => {
-    // const data = useLoaderData()
-    // console.log(data);
+    const data = useLoaderData()
+     console.log(data);
     const { user } = useContext(AuthContext);
-    const [articles, setArticles] = useState([]);
-    //const [articles, setArticles] = useState(data?.data || []);
-    // console.log(articles);
-    const [loading, setLoading] = useState(true);
+    //const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState(data?.data || []);
+    console.log(articles);
+   // const [loading, setLoading] = useState(true);
     const [selectedArticle, setSelectedArticle] = useState(null);
 
 
-    useEffect(() => {
-        const fetchMyArticles = async () => {
-            try {
-                setTimeout(async () => {
-                    const res = await axios.get(`${import.meta.env.VITE_API_URL}/my-articles?email=${user?.email}`);
-                    setArticles(res.data || []);
-                    setLoading(false);
-                }, 100);
-            } catch (error) {
-                console.error("Failed to fetch articles:", error);
-                setLoading(false);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchMyArticles = async () => {
+    //         try {
+    //             setTimeout(async () => {
+    //                 const res = await axios.get(`${import.meta.env.VITE_API_URL}/my-articles?email=${user?.email}`);
+    //                 setArticles(res.data || []);
+    //                 setLoading(false);
+    //             }, 100);
+    //         } catch (error) {
+    //             console.error("Failed to fetch articles:", error);
+    //             setLoading(false);
+    //         }
+    //     };
 
-        fetchMyArticles();
-    }, [user]);
+    //     fetchMyArticles();
+    // }, [user]);
 
 
 
@@ -110,9 +111,9 @@ const MyArticles = () => {
         }
     };
 
-    if (loading) {
-        return <Loading></Loading>
-    }
+    // if (loading) {
+    //     return <Loading></Loading>
+    // }
 
 
 

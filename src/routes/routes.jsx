@@ -61,12 +61,12 @@ export const router = createBrowserRouter([
                 </PrivateRoute> 
             },
             {
-                path: "/myArticles",
+                path: "/myArticles/:email",
                 element: <PrivateRoute>
                     <MyArticles></MyArticles>
-                </PrivateRoute>
-                // loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/my-articles/${params.email}`),
-                // hydrateFallbackElement: <Loading></Loading>
+                </PrivateRoute>,
+                loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/my-articles/${params.email}`),
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/aboutUs",

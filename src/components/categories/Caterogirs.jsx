@@ -14,9 +14,6 @@ const Caterogirs = ({ data }) => {
 
 
 
-    // console.log(articles);
-
-
     return (
         <div className='my-20 mb- px-4'>
             <h2 className="text-3xl md:text-4xl 
