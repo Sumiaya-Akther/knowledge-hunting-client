@@ -10,7 +10,7 @@ import WritingsTips from '../../components/writingTips/WritingsTips';
 const Home = () => {
     const data = useLoaderData();
     // const articles = data?.data;
-   // console.log(data.data);
+   //console.log(data.data);
     
     return (
         <div className='p-2'>

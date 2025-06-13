@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -10,11 +10,11 @@ import { useLoaderData } from 'react-router';
 
 const MyArticles = () => {
     const data = useLoaderData()
-     console.log(data);
-    const { user } = useContext(AuthContext);
+    // console.log(data);
+   // const { user } = useContext(AuthContext);
     //const [articles, setArticles] = useState([]);
     const [articles, setArticles] = useState(data?.data || []);
-    console.log(articles);
+    //console.log(articles);
    // const [loading, setLoading] = useState(true);
     const [selectedArticle, setSelectedArticle] = useState(null);
 

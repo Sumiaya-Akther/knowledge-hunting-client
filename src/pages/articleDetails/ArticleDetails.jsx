@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
-import { FaRegHeart, FaHeart, FaRegComment } from "react-icons/fa";
+import { FaRegHeart, FaRegComment } from "react-icons/fa";
+import { IoMdHeart } from "react-icons/io";
 import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -10,14 +11,31 @@ const ArticleDetails = () => {
     const { user } = useContext(AuthContext);
     //console.log(article);
     // const navigate = useNavigate();
-    const [liked, setLiked] = useState(false);
+    const [liked, setLiked] = useState(article.likedBy.includes(false));
     const [likesCount, setLikesCount] = useState(article.likedBy.length);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
 
+    useEffect(()=>{
+        setLiked(article.likedBy.includes(user?.email))
+    },[article.likedBy, user])
+
     const handleLike = () => {
-        setLiked(!liked);
-        setLikesCount((prev) => prev + (liked ? -1 : 1));
+
+        axios.patch(`${import.meta.env.VITE_API_URL}/like/${article._id}`, {
+            email: user?.email,
+        }).then(data =>{
+            console.log(data?.data);
+            const isLiked = data?.data?.liked;
+            //update like state
+            setLiked(isLiked)
+            //update count state
+            setLikesCount(prev =>(isLiked ? prev + 1 : prev - 1))
+            
+        }).catch(err =>{
+            console.log(err);
+            
+        })
 
     };
 
@@ -82,7 +100,7 @@ const ArticleDetails = () => {
 
             <div className="flex items-center gap-6 mb-4 text-gray-600 dark:text-gray-300">
                 <button onClick={handleLike} className="flex items-center gap-1 hover:text-red-500">
-                    {liked ? <FaHeart className="text-red-500" /> : <FaRegHeart />} {likesCount}
+                    {liked ? <IoMdHeart className="text-red-500"/> : <FaRegHeart />} {likesCount}
                 </button>
                 <div className="flex items-center gap-1">
                     <FaRegComment /> {comments.length}
