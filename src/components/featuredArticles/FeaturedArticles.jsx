@@ -17,7 +17,6 @@ const FeaturedArticles = () => {
                 setArticles(res.data);
                 setLoading(false);
                 //console.log(articles);
-                
             })
             .catch((error) => {
                 console.error("Failed to fetch featured articles:", error);
@@ -39,7 +38,7 @@ const FeaturedArticles = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-6 gap-8">
-        {articles.map((article) => (
+        {articles.slice(0, 6).map((article) => (
           <div
             key={article._id}
             className="rounded-xl shadow-md p-2 mb-5 bg-blue-300 dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl transition-shadow duration-300"
@@ -81,7 +80,7 @@ const FeaturedArticles = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex bg-black text-white items-center justify-center w-full p-2 my-2 font-semibold tracking-wide rounded-xl dark:text-gray-50"
+                  className="flex bg-black text-white cursor-pointer items-center justify-center w-full p-2 my-2 font-semibold tracking-wide rounded-xl dark:text-gray-50"
                 >
                   Read more
                 </motion.button>

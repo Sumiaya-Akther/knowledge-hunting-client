@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth/cordova';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.config';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import axios from 'axios';
 
 
 export const AuthContext = createContext();
@@ -33,7 +34,7 @@ const AuthProvider = ({ children }) => {
         setloading(true);
         const provider = new GoogleAuthProvider();
         return signInWithPopup(auth, provider)
-      };
+    };
 
     const logOut = () => {
         setloading(true);
@@ -56,8 +57,16 @@ const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             setUser(currentUser);
+            //post request for jwt  using user email
+            //api end-point: /jwt(poat method)
+            if (currentUser) {
+                const token = await currentUser.getIdToken();
+                //    localStorage.setItem("token", token);
+            } else {
+                // localStorage.removeItem("token");
+            }
             setloading(false);
         });
         return () => {

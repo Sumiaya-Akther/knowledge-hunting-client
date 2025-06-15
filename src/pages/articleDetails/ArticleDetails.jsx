@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import { FaRegHeart, FaRegComment } from "react-icons/fa";
 import { IoMdHeart } from "react-icons/io";
 import { AuthContext } from '../../provider/AuthProvider';
@@ -10,7 +10,7 @@ const ArticleDetails = () => {
     const { data: article } = useLoaderData();
     const { user } = useContext(AuthContext);
     //console.log(article);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [liked, setLiked] = useState(article.likedBy.includes(false));
     const [likesCount, setLikesCount] = useState(article.likedBy.length);
     const [comments, setComments] = useState([]);
@@ -21,6 +21,9 @@ const ArticleDetails = () => {
     },[article.likedBy, user])
 
     const handleLike = () => {
+        if (!user || !setLikesCount){
+            return navigate('/login')
+        }
 
         axios.patch(`${import.meta.env.VITE_API_URL}/like/${article._id}`, {
             email: user?.email,
@@ -39,9 +42,18 @@ const ArticleDetails = () => {
 
     };
 
+    const handleComment = () =>{
+         if (!user){
+            return navigate('/login');
+            
+        }
+    }
+
 
     const handleCommentPost = async () => {
-        if (!user || !newComment.trim()) return;
+        if (!user || !newComment.trim()){
+            return;
+        }
 
         const commentData = {
             article_id: article._id, // important: match backend field
@@ -67,7 +79,6 @@ const ArticleDetails = () => {
             console.error("Error posting comment:", error);
         }
     };
-
 
 
     return (
@@ -99,11 +110,11 @@ const ArticleDetails = () => {
             </div>
 
             <div className="flex items-center gap-6 mb-4 text-gray-600 dark:text-gray-300">
-                <button onClick={handleLike} className="flex items-center gap-1 hover:text-red-500">
+                <button onClick={handleLike} className="flex items-center gap-1 cursor-pointer hover:text-red-500">
                     {liked ? <IoMdHeart className="text-red-500"/> : <FaRegHeart />} {likesCount}
                 </button>
                 <div className="flex items-center gap-1">
-                    <FaRegComment /> {comments.length}
+                    <button className='flex gap-2 items-center cursor-pointer' onClick={handleComment}><FaRegComment /> {comments.length}</button>
                 </div>
             </div>
 
@@ -117,7 +128,7 @@ const ArticleDetails = () => {
                     />
                     <button
                         onClick={handleCommentPost}
-                        className="mt-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                        className="mt-2 px-4 py-2 cursor-pointer bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                     >
                         Post Comment
                     </button>

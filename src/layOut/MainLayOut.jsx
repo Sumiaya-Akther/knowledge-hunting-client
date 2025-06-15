@@ -10,7 +10,7 @@ const MainLayOut = () => {
             <header>
                 <NavBar></NavBar>
             </header>
-            <main className='w-11/12 mx-auto my-10  min-h-[calc(100vh-315px)] '>
+            <main className='w-11/12 mx-auto my-10  min-h-[calc(100vh-415px)] '>
                 <Outlet></Outlet>
             </main>
             <footer>

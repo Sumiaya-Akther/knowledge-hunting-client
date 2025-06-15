@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
                 index: true,
                 path: "/",
                 Component: Home,
-                loader: () =>axios(`${import.meta.env.VITE_API_URL}/articles`),
+                loader: () => axios(`${import.meta.env.VITE_API_URL}/articles`),
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
@@ -40,33 +40,33 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/allArticles",
-                 Component: Articles,
+                Component: Articles,
             },
             {
-               path: "/category/:categoryName",
-               Component: Category,
-               loader: ({params}) =>axios.get(`${import.meta.env.VITE_API_URL}/articles/category/${params.categoryName}`),
-               hydrateFallbackElement: <Loading></Loading>
+                path: "/category/:categoryName",
+                Component: Category,
+                loader: ({ params }) => axios.get(`${import.meta.env.VITE_API_URL}/articles/category/${params.categoryName}`),
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/article/:id",
                 Component: ArticleDetails,
-                loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/article/${params.id}`),
+                loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/article/${params.id}`),
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/postArticle",
-                element:<PrivateRoute>
+                element: <PrivateRoute>
                     <PostArticle></PostArticle>
-                </PrivateRoute> 
+                </PrivateRoute>
             },
             {
-                path: "/myArticles/:email",
+                path: "/myArticles",
                 element: <PrivateRoute>
                     <MyArticles></MyArticles>
                 </PrivateRoute>,
-                loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/my-articles/${params.email}`),
-                hydrateFallbackElement: <Loading></Loading>
+                // loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/my-articles/${params.email}`),
+                // hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/aboutUs",
@@ -76,12 +76,12 @@ export const router = createBrowserRouter([
 
     },
     {
-       path: '/register',
-       Component: Register
+        path: '/register',
+        Component: Register
     },
     {
-       path: '/login',
-       Component: Login
+        path: '/login',
+        Component: Login
     },
     {
         path: "*",

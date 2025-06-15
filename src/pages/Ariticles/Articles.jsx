@@ -38,7 +38,7 @@ const Articles = () => {
         fetchArticles();
     }, [selectedCategory]);
 
-    if (loading){
+    if (loading) {
         return <Loading></Loading>
     }
 
@@ -49,7 +49,7 @@ const Articles = () => {
                 {categories.map(category => (
                     <button
                         key={category}
-                        className={`px-4 py-2 rounded-full border ${selectedCategory === category ? 'bg-cyan-600 text-white' : 'bg-white text-black'
+                        className={`px-4 py-2 rounded-full cursor-pointer border ${selectedCategory === category ? 'bg-cyan-600 text-white' : 'bg-white text-black'
                             }`}
                         onClick={() => setSelectedCategory(category)}
                     >

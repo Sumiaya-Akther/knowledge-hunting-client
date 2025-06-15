@@ -25,7 +25,7 @@ const ArticleCard = ({ article }) => {
                         <h1 className='font-bold text-xl'>{article.title} </h1>
                         <div className="badge badge-secondary p-1">{article.category}</div>
                         <Link to={`/article/${article._id}`}>
-                            <button type="button" className="flex bg-black text-white items-center justify-center w-full p-2 my-2 font-semibold tracking-wide rounded-4xl dark:text-gray-50">Read more</button>
+                            <button type="button" className="flex bg-black text-white items-center justify-center w-full p-2 my-2 font-semibold tracking-wide rounded-4xl dark:text-gray-50 cursor-pointer">Read more</button>
                         </Link>
                     </div>
                 </div>

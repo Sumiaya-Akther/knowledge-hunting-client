@@ -1,29 +1,48 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import UpdateData from '../../components/updateData/UpdateData';
 import Loading from '../../components/loading/Loading';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+
 
 
 const MyArticles = () => {
-    const data = useLoaderData()
+    //const data = useLoaderData()
     // console.log(data);
-   // const { user } = useContext(AuthContext);
-    //const [articles, setArticles] = useState([]);
-    const [articles, setArticles] = useState(data?.data || []);
+    const axiosSecure = useAxiosSecure();
+    const { user } = useContext(AuthContext);
+    const [articles, setArticles] = useState([]);
+    //const [articles, setArticles] = useState(data?.data || []);
     //console.log(articles);
-   // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [selectedArticle, setSelectedArticle] = useState(null);
+
+
+    useEffect(() => {
+        axiosSecure.get(`/my-articles/${user?.email}`)
+            .then((res) => {
+                setArticles(res.data || []);
+                setLoading(false);
+                // console.log(res.data);
+                // console.log(user.accessToken);
+
+
+            })
+            .catch((error) => {
+                console.error("Failed to fetch articles:", error);
+                setLoading(false);
+            })
+    }, [user.email, axiosSecure])
 
 
     // useEffect(() => {
     //     const fetchMyArticles = async () => {
     //         try {
     //             setTimeout(async () => {
-    //                 const res = await axios.get(`${import.meta.env.VITE_API_URL}/my-articles?email=${user?.email}`);
+    //                 const res = await axios.get(`${import.meta.env.VITE_API_URL}/my-articles/${user.email`});
     //                 setArticles(res.data || []);
     //                 setLoading(false);
     //             }, 100);
@@ -100,20 +119,20 @@ const MyArticles = () => {
                         a._id === selectedArticle._id ? { ...a, ...updatedArticle } : a
                     )
                 );
-                  toast.success('Article updated successfully!');
-                   document.getElementById('update_modal').close()
+                toast.success('Article updated successfully!');
+                document.getElementById('update_modal').close()
                 //Swal.fire("Updated!", "Article updated successfully.", "success");
                 setSelectedArticle(null);
             }
         } catch (err) {
-           // Swal.fire("Error", "Update failed.", "error");
-           toast.error('Update failed!');
+            // Swal.fire("Error", "Update failed.", "error");
+            toast.error('Update failed!');
         }
     };
 
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
+    if (loading) {
+        return <Loading></Loading>
+    }
 
 
 
@@ -148,13 +167,13 @@ const MyArticles = () => {
                                             <td>
                                                 <button
                                                     onClick={() => handleUpdate(a)}
-                                                    className="btn btn-sm btn-info mr-2"
+                                                    className="btn btn-sm btn-info mr-2 cursor-pointer"
                                                 >
                                                     Update
                                                 </button>
                                                 <button
                                                     onClick={() => handleDelete(a._id)}
-                                                    className="btn btn-sm btn-error"
+                                                    className="btn btn-sm btn-error cursor-pointer"
                                                 >
                                                     Delete
                                                 </button>
