@@ -4,10 +4,12 @@ import { useLocation, useNavigate } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Loading from '../../components/loading/Loading';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const PostArticle = () => {
 
     const { user } = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
     const location = useLocation();
     const [loading, setLoading] = useState(false);
@@ -56,7 +58,7 @@ const PostArticle = () => {
         // })
 
 
-        axios.post(`${import.meta.env.VITE_API_URL}/articles`, articleData)
+        axiosSecure.post(`/articles`, articleData)
             .then(data => {
                 if (data.data.insertedId) {
                     Swal.fire({
