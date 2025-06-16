@@ -59,7 +59,7 @@ const Articles = () => {
             </div>
 
             {/* Articles list */}
-            <div className='p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"'>
+            <div className='p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                 {
                     articles.map((article) => <ArticleCard key={article._id} article={article}></ArticleCard>)
                 }

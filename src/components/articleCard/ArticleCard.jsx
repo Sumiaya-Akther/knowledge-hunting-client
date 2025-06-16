@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const ArticleCard = ({ article }) => {
     return (
         <div>
-            <div className="rounded-xl shadow-md p-2 mb-5 bg-blue-300 h-[590px] sm:w-96 dark:bg-gray-50 dark:text-gray-800">
+            <div className="rounded-xl shadow-md p-2 mb-5 bg-blue-300 h-[590px]  dark:bg-gray-50 dark:text-gray-800">
                 <div className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
                         <img src={article.author_photo

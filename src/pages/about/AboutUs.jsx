@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const AboutUs = () => {
     return (
@@ -64,18 +65,6 @@ const AboutUs = () => {
           <p className="text-gray-700 dark:text-gray-300">
             Thanks to every student who believes in sharing knowledge and helping others grow. You are the reason this platform exists.
           </p>
-        </section>
-
-        {/* Section 7 */}
-        <section className="text-center mt-12">
-          <h2 className="text-xl font-bold mb-2">Want to Join Us?</h2>
-          <p className="mb-4 text-gray-600 dark:text-gray-400">Just register and start contributing your thoughts today.</p>
-          <a
-            href="/register"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition duration-300"
-          >
-            Get Started
-          </a>
         </section>
       </div>
     </div>
