@@ -8,6 +8,8 @@ const Login = () => {
     const navigate = useNavigate();
     const { handleLogin, googleLogin } = useContext(AuthContext);
     const location = useLocation();
+    const from = location.state || '/';
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +31,7 @@ const Login = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate(`${location.state ? location.state : "/"}`);
+                    navigate(from);
                 }
             })
             .catch((error) => {

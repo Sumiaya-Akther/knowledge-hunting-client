@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
-import { useLocation, useNavigate } from 'react-router';
-import axios from 'axios';
+import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import Loading from '../../components/loading/Loading';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
@@ -11,7 +10,7 @@ const PostArticle = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
-    const location = useLocation();
+    //const location = useLocation();
     const [loading, setLoading] = useState(false);
 
     const handlePostArticle = async (e) => {
@@ -67,7 +66,7 @@ const PostArticle = () => {
                         draggable: true
                     });
                     form.reset();
-                    navigate(`${location.state ? location.state : "/"}`);
+                    navigate('/myArticles');
                 }
             })
             .catch((error) => {

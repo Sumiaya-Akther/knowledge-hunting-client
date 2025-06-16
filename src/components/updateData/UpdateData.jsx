@@ -1,6 +1,7 @@
 import React from 'react';
 
 const UpdateData = ({ selectedArticle, handleUpdateSubmit }) => {
+    if (!selectedArticle) return <p>Loading...</p>;
     return (
         <div>
             <form onSubmit={handleUpdateSubmit} className="grid grid-cols-1 gap-4">
@@ -38,7 +39,7 @@ const UpdateData = ({ selectedArticle, handleUpdateSubmit }) => {
                         required
                         className="select select-bordered w-full"
                     >
-                        {/* <option value="">Select a Category</option> */}
+                        <option value="">Select a Category</option>
                         <option value="Programming">Programming</option>
                         <option value="Science">Science</option>
                         <option value="Education">Education</option>
