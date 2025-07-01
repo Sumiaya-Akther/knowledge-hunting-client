@@ -21,6 +21,8 @@ import DashHome from "../components/dashPage/DashHome";
 import Profile from "../pages/profile/Profile";
 import Contact from "../pages/contact/Contact";
 import Support from "../pages/support/Support";
+import Report from "../pages/reportPage/Report";
+import Faq from "../pages/faqPage/Faq";
 
 
 export const router = createBrowserRouter([
@@ -70,6 +72,14 @@ export const router = createBrowserRouter([
             {
                 path:"/support",
                 Component: Support
+            },
+            {
+                path: "/report",
+                Component: Report
+            },
+            {
+                path:"/faq",
+                Component: Faq
             }
         ]
 
