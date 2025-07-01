@@ -20,6 +20,7 @@ import Dashboard from "../layOut/Dashboard";
 import DashHome from "../components/dashPage/DashHome";
 import Profile from "../pages/profile/Profile";
 import Contact from "../pages/contact/Contact";
+import Support from "../pages/support/Support";
 
 
 export const router = createBrowserRouter([
@@ -59,12 +60,16 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
-                path: "/aboutUs",
+                path: "/about",
                 Component: AboutUs
             },
             {
                 path:"/contact",
                 Component:Contact
+            },
+            {
+                path:"/support",
+                Component: Support
             }
         ]
 

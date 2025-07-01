@@ -126,6 +126,16 @@ const Navbar = () => {
                                 Contact
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/support"
+                                className={({ isActive }) =>
+                                    isActive ? "text-cyan-600 font-extrabold" : ""
+                                }
+                            >
+                                Support
+                            </NavLink>
+                        </li>
                         {
                             user ? <li>
                                 <NavLink

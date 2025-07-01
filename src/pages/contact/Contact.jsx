@@ -39,7 +39,7 @@ const Contact = () => {
   };
 
     return (
-    <section className="min-h-screen bg-white rounded-2xl dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 py-12 px-4">
+    <section className="min-h-screen bg-gradient-to-br from-white to-cyan-100 rounded-2xl dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 py-12 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Contact Info */}
         <div className="space-y-6">
