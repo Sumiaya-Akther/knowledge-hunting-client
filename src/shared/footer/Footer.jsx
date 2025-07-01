@@ -1,35 +1,85 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Footer = () => {
+    ;
+    const { user } = useContext(AuthContext)
     return (
-        <footer className="bg-gray-900 text-gray-300 py-10">
+        <footer className="bg-base-300  py-10">
             <div className="w-11/12 mx-auto px-6 flex flex-col items-center gap-6">
                 {/* Logo */}
-                <div className="flex items-center space-x-3 text-white font-bold text-3xl">
-                    <h1 className="btn btn-ghost flex items-center font-bold text-3xl">Knowledge<span className='text-cyan-600'>Hunt</span></h1>
+                <div className="flex items-center space-x-3  font-bold text-3xl">
+                    <h1 className="btn btn-ghost flex items-center font-bold text-xl md:text-3xl"><img className='w-18' src="logo1.png" alt="" />Knowledge <span className='text-cyan-600'>Hunt</span></h1>
 
                 </div>
 
                 {/* Links */}
                 <nav>
-                    <ul className="flex space-x-8 flex-col md:flex-row text-center text-lg font-medium">
+                    <ul className="menu menu-horizontal text-[16px] px-1">
                         <li>
-                            <Link to='/aboutUs' className="hover:text-cyan-400 transition-colors">
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) =>
+                                    isActive ? "text-cyan-600 font-extrabold" : ""
+                                }
+                            >
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/allArticles"
+                                className={({ isActive }) =>
+                                    isActive ? "text-cyan-600 font-bold" : ""
+                                }
+                            >
+                                All Articles
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/about"
+                                className={({ isActive }) =>
+                                    isActive ? "text-cyan-600 font-extrabold" : ""
+                                }
+                            >
                                 About Us
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                           <Link to='#' className="hover:text-cyan-400 transition-colors">
-                                Contact Us
-                            </Link>
+                            <NavLink
+                                to="/contact"
+                                className={({ isActive }) =>
+                                    isActive ? "text-cyan-600 font-extrabold" : ""
+                                }
+                            >
+                                Contact
+                            </NavLink>
                         </li>
                         <li>
-                           <Link to="#" className="hover:text-cyan-400 transition-colors">
-                                Terms & Conditions
-                            </Link>
+                            <NavLink
+                                to="/support"
+                                className={({ isActive }) =>
+                                    isActive ? "text-cyan-600 font-extrabold" : ""
+                                }
+                            >
+                                Support
+                            </NavLink>
                         </li>
+                        {
+                            user ? <li>
+                                <NavLink
+                                    to="/dashboard"
+                                    className={({ isActive }) =>
+                                        isActive ? "text-cyan-600 font-extrabold" : ""
+                                    }
+                                >
+                                    Dashboard
+                                </NavLink>
+                            </li> : <></>
+                        }
                     </ul>
                 </nav>
 
@@ -39,7 +89,7 @@ const Footer = () => {
                         href="https://twitter.com/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-cyan-400"
+                        className="hover:text-cyan-600"
                         aria-label="Twitter"
                     >
                         <FaTwitter />
@@ -48,7 +98,7 @@ const Footer = () => {
                         href="https://linkedin.com/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-cyan-400"
+                        className="hover:text-cyan-600"
                         aria-label="LinkedIn"
                     >
                         <FaLinkedin />
@@ -57,7 +107,7 @@ const Footer = () => {
                         href="https://instagram.com/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-cyan-400"
+                        className="hover:text-cyan-600"
                         aria-label="Instagram"
                     >
                         <FaInstagram />
@@ -66,8 +116,8 @@ const Footer = () => {
             </div>
 
             {/* Copyright */}
-            <div className="text-center text-gray-500 text-sm mt-8">
-                &copy; {new Date().getFullYear()} KnowledgeHunt. All rights reserved.
+            <div className="text-center  text-sm mt-8">
+                &copy; {new Date().getFullYear()} HobbyHub. All rights reserved.
             </div>
         </footer>
     );

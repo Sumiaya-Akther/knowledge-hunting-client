@@ -27,9 +27,6 @@ const MyArticles = () => {
                 setArticles(res.data || []);
                 setLoading(false);
                 // console.log(res.data);
-                // console.log(user.accessToken);
-
-
             })
             .catch((error) => {
                 console.error("Failed to fetch articles:", error);

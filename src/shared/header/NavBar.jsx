@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import ThemeToggle from '../../components/themeToggle/ThemeToggle';
+import Swal from 'sweetalert2';
 
 
 const Navbar = () => {
@@ -9,10 +10,24 @@ const Navbar = () => {
     const navigate = useNavigate();
     const { user, logOut } = useContext(AuthContext)
     //console.log(user);
+    const handleLogOut = () => {
+        logOut();
+        if (logOut) {
+
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Logout Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate("/");
+        }
+    }
 
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar fixed top-0 z-50 bg-base-100 shadow-sm">
             <div className='w-11/12 mx-auto flex justify-between'>
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -26,7 +41,7 @@ const Navbar = () => {
                                 <NavLink
                                     to="/"
                                     className={({ isActive }) =>
-                                        isActive ? "text-cyan-900 font-bold" : ""
+                                        isActive ? "text-cyan-600 font-bold" : ""
                                     }
                                 >
                                     Home
@@ -36,7 +51,7 @@ const Navbar = () => {
                                 <NavLink
                                     to="/allArticles"
                                     className={({ isActive }) =>
-                                        isActive ? "text-cyan-900 font-bold" : ""
+                                        isActive ? "text-cyan-600 font-bold" : ""
                                     }
                                 >
                                     All Articles
@@ -44,46 +59,38 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to="/postArticle"
-                                    className={({ isActive }) =>
-                                        isActive ? "text-cyan-900 font-bold" : ""
-                                    }
-                                >
-                                    Post Article
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/myArticles"
-                                    className={({ isActive }) =>
-                                        isActive ? "text-cyan-900 font-bold" : ""
-                                    }
-                                >
-                                    My Articles
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
                                     to="/aboutUs"
                                     className={({ isActive }) =>
-                                        isActive ? "text-cyan-900 font-bold" : ""
+                                        isActive ? "text-cyan-600 font-bold" : ""
                                     }
                                 >
                                     About Us
                                 </NavLink>
                             </li>
+                            {
+                                user ? <li>
+                                    <NavLink
+                                        to="/dashboard"
+                                        className={({ isActive }) =>
+                                            isActive ? "text-cyan-600 font-bold" : ""
+                                        }
+                                    >
+                                        Dashboard
+                                    </NavLink>
+                                </li> : <></>
+                            }
                         </ul>
                     </div>
-                    <h1 className="btn btn-ghost flex items-center font-bold text-xl md:text-3xl">Knowledge<span className='text-cyan-600'>Hunt</span></h1>
+                    <h1 className="flex font-bold items-center md:text-3xl"><img className='w-20' src="/public/logo1.png" alt="" /> Knowledge<span className='text-cyan-600'>Hunt</span></h1>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal text-[16px] px-1">
 
                         <li>
                             <NavLink
                                 to="/"
                                 className={({ isActive }) =>
-                                    isActive ? "text-cyan-900 font-bold" : ""
+                                    isActive ? "text-cyan-600 font-extrabold" : ""
                                 }
                             >
                                 Home
@@ -93,7 +100,7 @@ const Navbar = () => {
                             <NavLink
                                 to="/allArticles"
                                 className={({ isActive }) =>
-                                    isActive ? "text-cyan-900 font-bold" : ""
+                                    isActive ? "text-cyan-600 font-bold" : ""
                                 }
                             >
                                 All Articles
@@ -101,35 +108,26 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/postArticle"
+                                to="/about"
                                 className={({ isActive }) =>
-                                    isActive ? "text-cyan-900 font-bold" : ""
-                                }
-                            >
-                                Post Article
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                            // {`/myArticles/${user?.email}`}
-                                to="/myArticles"
-                                className={({ isActive }) =>
-                                    isActive ? "text-cyan-900 font-bold" : ""
-                                }
-                            >
-                                My Articles
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/aboutUs"
-                                className={({ isActive }) =>
-                                    isActive ? "text-cyan-900 font-bold" : ""
+                                    isActive ? "text-cyan-600 font-bold" : ""
                                 }
                             >
                                 About Us
                             </NavLink>
                         </li>
+                        {
+                            user ? <li>
+                                <NavLink
+                                    to="/dashboard"
+                                    className={({ isActive }) =>
+                                        isActive ? "text-cyan-600 font-bold" : ""
+                                    }
+                                >
+                                    Dashboard
+                                </NavLink>
+                            </li> : <></>
+                        }
                     </ul>
                 </div>
                 <div className="navbar-end space-x-3">
@@ -155,7 +153,7 @@ const Navbar = () => {
                                             <NavLink
                                                 to="/myArticles"
                                                 className={({ isActive }) =>
-                                                    isActive ? "text-cyan-900 font-bold" : ""
+                                                    isActive ? "text-cyan-600 font-bold" : ""
                                                 }
                                             >
                                                 My Articles
@@ -165,13 +163,13 @@ const Navbar = () => {
                                             <NavLink
                                                 to="/postArticle"
                                                 className={({ isActive }) =>
-                                                    isActive ? "text-cyan-900 font-bold" : ""
+                                                    isActive ? "text-cyan-600 font-bold" : ""
                                                 }
                                             >
                                                 Post Article
                                             </NavLink>
                                         </li>
-                                        <li><button onClick={logOut} className='btn  btn-info rounded-4xl'>LogOut</button></li>
+                                        <li><button onClick={handleLogOut} className='btn bg-cyan-600 rounded-4xl'>LogOut</button></li>
                                     </ul>
                                 </div>
 
@@ -182,7 +180,7 @@ const Navbar = () => {
                         ) : (
                             <div className='flex gap-5'>
 
-                                <button onClick={() => navigate("/login")} className="btn  btn-info rounded-4xl">Login</button>
+                                <button onClick={() => navigate("/login")} className="btn bg-cyan-600 rounded-4xl">Login</button>
 
                             </div>
 

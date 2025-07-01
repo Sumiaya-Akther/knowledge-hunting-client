@@ -16,6 +16,9 @@ import Articles from "../pages/Ariticles/Articles";
 import ArticleDetails from "../pages/articleDetails/ArticleDetails";
 import Category from "../pages/category/category";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layOut/Dashboard";
+import DashHome from "../components/dashPage/DashHome";
+import Profile from "../pages/profile/Profile";
 
 
 export const router = createBrowserRouter([
@@ -55,20 +58,6 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <Loading></Loading>
             },
             {
-                path: "/postArticle",
-                element: <PrivateRoute>
-                    <PostArticle></PostArticle>
-                </PrivateRoute>
-            },
-            {
-                path: "/myArticles",
-                element: <PrivateRoute>
-                    <MyArticles></MyArticles>
-                </PrivateRoute>,
-                // loader: ({params}) =>axios(`${import.meta.env.VITE_API_URL}/my-articles/${params.email}`),
-                // hydrateFallbackElement: <Loading></Loading>
-            },
-            {
                 path: "/aboutUs",
                 Component: AboutUs
             }
@@ -86,5 +75,36 @@ export const router = createBrowserRouter([
     {
         path: "*",
         Component: ErrorPage
+    },
+    {
+        path:"/dashboard",
+        element: <PrivateRoute>
+            <Dashboard></Dashboard>
+        </PrivateRoute>,
+        children: [
+                        {
+                path: "/dashboard",
+                Component: DashHome,
+                hydrateFallbackElement: <Loading></Loading>
+            },
+             {
+                path: "postArticle",
+                element: <PrivateRoute>
+                    <PostArticle></PostArticle>
+                </PrivateRoute>
+            },
+                        {
+                path: "myArticles",
+                element: <PrivateRoute>
+                    <MyArticles></MyArticles>
+                </PrivateRoute>,
+            },
+                        {
+                path: "profile",
+                element: <PrivateRoute>
+                    <Profile></Profile>
+                </PrivateRoute>
+            }
+        ]
     }
 ]);
