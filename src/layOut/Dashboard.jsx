@@ -10,7 +10,7 @@ import { IoChevronBackCircle } from "react-icons/io5";
 import Swal from 'sweetalert2';
 
 const Dashboard = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogOut = () => {
         logOut();

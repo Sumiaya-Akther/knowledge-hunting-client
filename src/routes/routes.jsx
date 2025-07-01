@@ -23,6 +23,7 @@ import Contact from "../pages/contact/Contact";
 import Support from "../pages/support/Support";
 import Report from "../pages/reportPage/Report";
 import Faq from "../pages/faqPage/Faq";
+import ForgotPassword from "../pages/forgetPass/ForgotPassword";
 
 
 export const router = createBrowserRouter([
@@ -66,11 +67,11 @@ export const router = createBrowserRouter([
                 Component: AboutUs
             },
             {
-                path:"/contact",
-                Component:Contact
+                path: "/contact",
+                Component: Contact
             },
             {
-                path:"/support",
+                path: "/support",
                 Component: Support
             },
             {
@@ -78,7 +79,7 @@ export const router = createBrowserRouter([
                 Component: Report
             },
             {
-                path:"/faq",
+                path: "/faq",
                 Component: Faq
             }
         ]
@@ -93,38 +94,43 @@ export const router = createBrowserRouter([
         Component: Login
     },
     {
+        path: "forgotPass",
+        Component: ForgotPassword
+    },
+    {
         path: "*",
         Component: ErrorPage
     },
     {
-        path:"/dashboard",
+        path: "/dashboard",
         element: <PrivateRoute>
             <Dashboard></Dashboard>
         </PrivateRoute>,
         children: [
-                        {
+            {
                 path: "/dashboard",
                 Component: DashHome,
                 hydrateFallbackElement: <Loading></Loading>
             },
-             {
+            {
                 path: "postArticle",
                 element: <PrivateRoute>
                     <PostArticle></PostArticle>
                 </PrivateRoute>
             },
-                        {
+            {
                 path: "myArticles",
                 element: <PrivateRoute>
                     <MyArticles></MyArticles>
                 </PrivateRoute>,
             },
-                        {
+            {
                 path: "profile",
                 element: <PrivateRoute>
                     <Profile></Profile>
                 </PrivateRoute>
-            }
+            },
+
         ]
     }
 ]);

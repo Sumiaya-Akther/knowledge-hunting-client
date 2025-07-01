@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth/cordova';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.config';
-import { GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import axios from 'axios';
 
 
@@ -41,6 +41,11 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     };
 
+    const resetPassword = (email) => {
+        setloading(true);
+        return sendPasswordResetEmail(auth, email);
+    };
+
 
 
     const userInfo = {
@@ -52,7 +57,8 @@ const AuthProvider = ({ children }) => {
         logOut,
         updateUser,
         loading,
-        setloading
+        setloading,
+        resetPassword
 
     }
 

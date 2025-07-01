@@ -66,7 +66,7 @@ const PostArticle = () => {
                         draggable: true
                     });
                     form.reset();
-                    navigate('/myArticles');
+                    navigate('/dashboard/myArticles');
                 }
             })
             .catch((error) => {
