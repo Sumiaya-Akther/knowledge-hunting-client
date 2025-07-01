@@ -44,7 +44,7 @@ const Banner = () => {
                         Knowledge management doesn’t happen until somebody reuses something.
                     </p>
                     <Link to="/allArticles">
-                    <button className="btn bg-yellow-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
+                    <button className="btn bg-cyan-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
                     </Link>
                 </div>
             </div>
@@ -74,7 +74,7 @@ const Banner = () => {
                         “Knowledge can only be volunteered it cannot be conscripted.”
                     </p>
                     <Link to="/allArticles">
-                    <button className="btn bg-yellow-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
+                    <button className="btn bg-cyan-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
                     </Link>
                 </div>
             </div>
@@ -104,7 +104,7 @@ const Banner = () => {
                         Karl Popper: “All life is problem solving.”
                     </p>
                     <Link to="/allArticles">
-                    <button className="btn bg-yellow-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
+                    <button className="btn bg-cyan-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
                     </Link>
                 </div>
             </div>
@@ -134,7 +134,7 @@ const Banner = () => {
                        “In the context of real need few people will withhold their knowledge.”
                     </p>
                     <Link to="/allArticles">
-                    <button className="btn bg-yellow-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
+                    <button className="btn bg-cyan-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
                     </Link>
                 </div>
             </div>
@@ -163,7 +163,7 @@ const Banner = () => {
                         “We only know what we know when we need to know it.”
                     </p>
                     <Link to="/allArticles">
-                    <button className="btn bg-yellow-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
+                    <button className="btn bg-cyan-600 text-white rounded-2xl px-6 py-2">Explore Articles</button>
                     </Link>
                 </div>
             </div>
