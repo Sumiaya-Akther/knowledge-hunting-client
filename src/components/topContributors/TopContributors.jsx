@@ -12,7 +12,7 @@ const TopContributors = () => {
     }, []);
 
     return (
-        <section className="py-12 bg-white dark:bg-gray-900">
+        <section className="py-12">
             <div className=" px-6">
                 <h2 className="text-3xl md:text-4xl 
               font-bold mb-12 text-cyan-700 text-center">
