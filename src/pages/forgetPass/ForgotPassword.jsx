@@ -1,57 +1,41 @@
 import React, { useState, useContext } from 'react';
+
 import Swal from 'sweetalert2';
-
-import { Link } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
-
 const ForgotPassword = () => {
-  const { resetPassword } = useContext(AuthContext);
+  const { resetPassword } = useContext(AuthContext); 
   const [email, setEmail] = useState('');
 
   const handleReset = async (e) => {
     e.preventDefault();
 
     if (!email) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Email required!',
-        text: 'Please enter your email address.',
-      });
-      return;
+      return Swal.fire('Warning', 'Please enter your email.', 'warning');
     }
 
     try {
       await resetPassword(email);
-      Swal.fire({
-        icon: 'success',
-        title: 'Reset Link Sent!',
-        text: 'Please check your inbox to reset your password.',
-      });
+      Swal.fire('Success', 'Password reset link sent to your email.', 'success');
       setEmail('');
     } catch (error) {
-      console.error(error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Something went wrong',
-        text: error.message || 'Could not send reset link.',
-      });
+      Swal.fire('Error', error.message, 'error');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white dark:bg-gray-900 p-8 rounded-xl shadow-md">
+    <div className="mt-50 flex items-center justify-center px-4">
+      <div className="max-w-md w-full p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-cyan-600 dark:text-cyan-400 mb-6">
-          Forgot Password
+          Forgot Password?
         </h2>
-
         <form onSubmit={handleReset} className="space-y-4">
           <input
             type="email"
-            placeholder="Enter your email"
+            placeholder="Your registered email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md dark:bg-gray-800 dark:text-white"
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md"
+            required
           />
           <button
             type="submit"
@@ -60,13 +44,6 @@ const ForgotPassword = () => {
             Send Reset Link
           </button>
         </form>
-
-        <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
-          Remembered your password?{' '}
-          <Link to="/login" className="text-cyan-600 dark:text-cyan-400 underline">
-            Login
-          </Link>
-        </p>
       </div>
     </div>
   );

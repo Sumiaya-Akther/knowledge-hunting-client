@@ -23,12 +23,14 @@ const testimonials = [
 
 
 const Testimonials = () => {
-    return (
-            <section className=" py-16">
+  return (
+    <section className=" py-16">
       <h2 className="text-3xl md:text-4xl 
               font-bold mb-12 text-cyan-700 text-center">
-       🌟 What Our Users Say
+        🌟 What Our Users Say
       </h2>
+      <p className='text-center max-w-2xl mx-auto mb-10'>Hear what our users have to say about their experience on Knowledge Hunt.
+        Real feedback from real learners, creators, and readers.</p>
       <div className="grid md:grid-cols-3 gap-8">
         {testimonials.map((t, index) => (
           <motion.div
@@ -50,7 +52,7 @@ const Testimonials = () => {
         ))}
       </div>
     </section>
-    );
+  );
 };
 
 export default Testimonials;

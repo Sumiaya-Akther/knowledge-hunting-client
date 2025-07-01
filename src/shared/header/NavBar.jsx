@@ -169,26 +169,6 @@ const Navbar = () => {
                                     <ul
                                         tabIndex={0}
                                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 space-y-2 shadow">
-                                        <li>
-                                            <NavLink
-                                                to="/myArticles"
-                                                className={({ isActive }) =>
-                                                    isActive ? "text-cyan-600 font-bold" : ""
-                                                }
-                                            >
-                                                My Articles
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink
-                                                to="/postArticle"
-                                                className={({ isActive }) =>
-                                                    isActive ? "text-cyan-600 font-bold" : ""
-                                                }
-                                            >
-                                                Post Article
-                                            </NavLink>
-                                        </li>
                                         <li><button onClick={handleLogOut} className='btn bg-cyan-600 rounded-4xl'>LogOut</button></li>
                                     </ul>
                                 </div>

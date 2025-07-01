@@ -1,23 +1,25 @@
-import React  from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 
 
 const Caterogirs = ({ data }) => {
 
     const articles = data?.data.data;
-   // console.log(articles);
+    // console.log(articles);
 
     const uniqueArticles = [
         ...new Map(articles.map(article => [article.category, article])).values()
     ];
-   // console.log(uniqueArticles);
+    // console.log(uniqueArticles);
 
 
 
     return (
         <div className='my-20 mb- px-4'>
             <h2 className="text-3xl md:text-4xl 
-              font-bold mb-18 text-cyan-700 text-center">🌟 Categories</h2>
+              font-bold mb-12 text-cyan-700 text-center">🌟 Categories</h2>
+            <p className='text-center max-w-2xl mx-auto mb-10'>Explore diverse article categories to match your interests and needs.
+                From science to storytelling — there's something for everyone.</p>
             <div className='flex flex-col md:flex-row mb-3 justify-center text-center gap-5'>
                 {
                     uniqueArticles.map((article) => <Link key={article._id} to={`/category/${article.category}`}>

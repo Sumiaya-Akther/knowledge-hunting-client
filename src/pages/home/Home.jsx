@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router';
 import Caterogirs from '../../components/categories/Caterogirs';
 import Testimonials from '../../components/testmonial/Testimonials';
 import WritingsTips from '../../components/writingTips/WritingsTips';
+import TopContributors from '../../components/topContributors/TopContributors';
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
             <Banner></Banner>
             <FeaturedArticles></FeaturedArticles>
             <Caterogirs data={data}></Caterogirs>
+            <TopContributors></TopContributors>
             <Testimonials></Testimonials>
             <WritingsTips></WritingsTips>
         </div>

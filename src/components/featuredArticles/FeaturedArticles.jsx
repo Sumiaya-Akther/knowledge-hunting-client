@@ -7,41 +7,43 @@ import { motion } from "framer-motion";
 
 
 const FeaturedArticles = () => {
-    const [articles, setArticles] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
 
-    useEffect(() => {
-        axios.get(`${import.meta.env.VITE_API_URL}/featured-articles`)
-            .then((res) => {
-                setArticles(res.data);
-                setLoading(false);
-                //console.log(articles);
-            })
-            .catch((error) => {
-                console.error("Failed to fetch featured articles:", error);
-                setLoading(false);
-            });
-    }, []);
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_URL}/featured-articles`)
+      .then((res) => {
+        setArticles(res.data);
+        setLoading(false);
+        //console.log(articles);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch featured articles:", error);
+        setLoading(false);
+      });
+  }, []);
 
-    if (loading) {
-        return <Loading></Loading>
-    }
+  if (loading) {
+    return <Loading></Loading>
+  }
 
 
 
-    return (
-            <div className="my-20">
+  return (
+    <div className="my-20">
       <h2 className="text-3xl md:text-4xl font-bold mb-12 text-cyan-700 text-center"
       >
         🌟 Featured Articles
       </h2>
+      <p className='text-center max-w-2xl mx-auto mb-10'>Discover our top handpicked articles curated for quality and relevance.
+        Stay ahead with trending topics, deep insights, and expert perspectives.</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-6 gap-8">
-        {articles.slice(0, 6).map((article) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-6 gap-6">
+        {articles.slice(0, 8).map((article) => (
           <div
             key={article._id}
-            className="rounded-xl shadow-md p-2 mb-5 bg-blue-300 dark:bg-gray-50 dark:text-gray-800 hover:shadow-xl transition-shadow duration-300"
+            className="rounded-xl shadow-md px-4 py-2 mb-3 h-[550px] bg-cyan-500 dark:bg-gray-50 dark:text-gray-800"
           >
             <div className="flex items-center justify-between p-3">
               <div className="flex items-center space-x-2">
@@ -50,7 +52,7 @@ const FeaturedArticles = () => {
                   alt=""
                   className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-300"
                 />
-                <div className="-space-y-1">
+                <div className="space-y-1">
                   <h2 className="text-sm font-semibold leading-none">
                     {article.author_name}
                   </h2>
@@ -61,7 +63,7 @@ const FeaturedArticles = () => {
               </div>
             </div>
 
-            <div className="p-5">
+            <div>
               <img
                 src={article.thumbnail}
                 alt=""
@@ -69,10 +71,10 @@ const FeaturedArticles = () => {
               />
             </div>
 
-            <div className="p-3 space-y-3">
-              <h1 className="font-bold text-xl">{article.title}</h1>
-              <p className="text-sm text-gray-800 dark:text-gray-700">
-                {article.content.slice(0, 100)}...
+            <div className=" space-y-3">
+              <h1 className="font-bold mt-2 text-xl line-clamp-1">{article.title}</h1>
+              <p className="text-sm text-gray-800 line-clamp-1 dark:text-gray-700">
+                {article.content}...
               </p>
               <div className="badge badge-secondary p-1 capitalize">{article.category}</div>
 
@@ -90,7 +92,7 @@ const FeaturedArticles = () => {
         ))}
       </div>
     </div>
-    );
+  );
 };
 
 export default FeaturedArticles;

@@ -81,21 +81,21 @@ export const router = createBrowserRouter([
             {
                 path: "/faq",
                 Component: Faq
+            },
+            {
+                path: '/register',
+                Component: Register
+            },
+            {
+                path: '/login',
+                Component: Login
+            },
+            {
+                path: "forgotPass",
+                Component: ForgotPassword
             }
         ]
 
-    },
-    {
-        path: '/register',
-        Component: Register
-    },
-    {
-        path: '/login',
-        Component: Login
-    },
-    {
-        path: "forgotPass",
-        Component: ForgotPassword
     },
     {
         path: "*",
