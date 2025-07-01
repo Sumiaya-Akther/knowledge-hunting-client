@@ -81,7 +81,7 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <h1 className="flex font-bold items-center md:text-3xl"><img src="logo1.png" alt="" />
+                    <h1 className="flex font-bold items-center md:text-3xl"><img className='w-20' src="logo1.png" alt="" />
                          Knowledge<span className='text-cyan-600'>Hunt</span></h1>
                 </div>
                 <div className="navbar-center hidden lg:flex">
