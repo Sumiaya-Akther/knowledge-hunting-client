@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const AboutUs = () => {
     return (
          <div className='p-5'>
-             <div className="min-h-screen bg-gray-200 rounded-2xl dark:from-gray-900 dark:to-gray-800  dark:text-white px-4 py-10 text-black">
+             <div className="min-h-screen bg-gradient-to-br from-white to-cyan-100 rounded-2xl dark:from-gray-900 dark:to-gray-800  dark:text-white px-4 py-10 text-black">
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <h1 className="text-4xl font-bold text-center mb-6">About Us</h1>
