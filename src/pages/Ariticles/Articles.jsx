@@ -59,7 +59,7 @@ const Articles = () => {
                     <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md text-sm bg-white dark:bg-gray-800 dark:text-white"
+                        className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md text-sm   "
                     >
                         {categories.map((category) => (
                             <option key={category} value={category}>
@@ -74,7 +74,7 @@ const Articles = () => {
                     <select
                         value={sortOrder}
                         onChange={(e) => setSortOrder(e.target.value)}
-                        className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md text-sm bg-white dark:bg-gray-800 dark:text-white"
+                        className="border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md text-sm  dark:bg-gray-800 "
                     >
                         <option value="newest">Newest First</option>
                         <option value="oldest">Oldest First</option>

@@ -7,6 +7,7 @@ import { GiJasmine } from "react-icons/gi";
 import { IoLogOut } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { IoChevronBackCircle } from "react-icons/io5";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import Swal from 'sweetalert2';
 
 const Dashboard = () => {
@@ -28,12 +29,12 @@ const Dashboard = () => {
     }
     return (
         <div className='bg-base-300'>
-            <div className="w-11/12 mx-auto flex flex-col md:flex-row min-h-screen ">
+            <div className="w-11/12 mx-auto flex flex-col overflow-x-scroll md:flex-row min-h-screen ">
                 {/* Sidebar */}
                 <aside className="w-full md:w-64 bg-base-300 border-r border-gray-300 shadow-md md:min-h-screen">
                     <div className="p-4 text-xl font-bold flex items-center border-bborder-gray-300"><img className='w-16' src="logo1.png" alt="" /> Dashboard
                     </div>
-                    <nav className=" flex md:flex-col gap-2 p-4">
+                    <nav className=" flex md:flex-col overflow-x-auto gap-2 p-4">
                         <NavLink
                             to="/dashboard"
                             className={({ isActive }) =>
@@ -45,6 +46,19 @@ const Dashboard = () => {
                         >
                             <IoHomeOutline size={20} />
                             <span className='hidden md:flex'> Overview</span>
+                        </NavLink>
+
+                        <NavLink
+                            to="/dashboard/dashAllArticle"
+                            className={({ isActive }) =>
+                                ` px-4 py-2 flex gap-2 items-center rounded-md transition ${isActive
+                                    ? "bg-cyan-500 text-white font-bold"
+                                    : ""
+                                }`
+                            }
+                        > <FaExternalLinkAlt size={20} className='hover: All Articles'/>
+                            <span className='hidden md:flex'>All Articles</span>
+
                         </NavLink>
 
                         <NavLink
@@ -72,7 +86,7 @@ const Dashboard = () => {
                             <span className='hidden md:flex'> My Articles</span>
 
                         </NavLink>
-                          <NavLink
+                        <NavLink
                             to="/dashboard/profile"
                             className={({ isActive }) =>
                                 ` px-4 py-2 flex gap-2 items-center rounded-md transition ${isActive
@@ -95,7 +109,7 @@ const Dashboard = () => {
                             to="/"
                             className=" flex gap-2 items-center px-4 py-2 rounded-md transition  font-bold">
                             <IoChevronBackCircle size={20} />
-                            <span className='hidden md:flex'>Back to Home</span>    
+                            <span className='hidden md:flex'>Back to Home</span>
                         </NavLink>
                     </nav>
                 </aside>
