@@ -76,14 +76,14 @@ const Login = () => {
 
 
     return (
-        <div className='flex gap-10 justify-center items-center my-8'>
-            <div className="hidden md:flex flex-col justify-between">
+        <div className='flex gap-10 justify-center flex-col md:flex-row items-center my-8 md:my-2'>
+            <div className="p-2">
                 <Lottie animationData={registerLotti} loop={true}>
 
                 </Lottie>
             </div>
-            <div className='py-10 px-8 my-12'>
-                <div className="w-full max-w-md mx-auto p-4 rounded-md shadow sm:p-8 bg-cyan-500">
+            <div className='p-2 md:py-1  my-5 md:my-1'>
+                <div className="w-full p-5 rounded-md shadow sm:p-8 bg-cyan-500">
                     <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
                     <p className="text-sm text-center dark:text-gray-600">Dont have account?
                         <NavLink to="/register" rel="noopener noreferrer" className="focus:underline hover:underline font-semibold">Register here</NavLink>

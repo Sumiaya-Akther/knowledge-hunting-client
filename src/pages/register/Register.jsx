@@ -63,7 +63,6 @@ const Register = () => {
 
     };
 
-
     return (
         <div className='flex gap-10 justify-center items-center my-8'>
             <div className='py-10 px-8'>
@@ -107,7 +106,6 @@ const Register = () => {
             </div>
             <div className="hidden md:flex flex-col justify-between">
                 <Lottie animationData={registerLotti} loop={true}>
-
                 </Lottie>
             </div>
         </div>
