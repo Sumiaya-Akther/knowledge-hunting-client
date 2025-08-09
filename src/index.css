@@ -13,8 +13,8 @@
     name: "light";
     default: true;
 
-    --color-primary: #4A90E2;  /* Bright Blue */
-    --color-secondary: #f2b121; /* Warm Yellow/Orange — good! */
+    --color-primary: #00b8db;  /* Bright Blue */
+    --color-secondary:#18181b; /* Warm Yellow/Orange — good! */
     --color-accent: #1F2937;  /* Dark Gray - for text/accent */
     --color-base-100: #F9FAFB; /* Soft Off-White background */
     --color-info: #2196F3;

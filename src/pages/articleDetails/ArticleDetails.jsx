@@ -82,73 +82,96 @@ const ArticleDetails = () => {
 
 
     return (
-        <div className="max-w-3xl mx-auto p-4 rounded-2xl shadow-lg bg-blue-300 dark:bg-gray-900">
-            <img
-                src={article.thumbnail}
-                alt={article.title}
-                className="w-full h-64 object-cover rounded-xl mb-4"
-            />
-            <div className="mb-4">
-                <h1 className="text-3xl font-bold text-gray-800 dark:text-white">{article.title}</h1>
-                <p className="text-sm text-gray-500 mt-1">{article.date}</p>
-                <div className="flex items-center mt-2 gap-3">
-                    <img src={article.author_photo} alt={article.author_name} className="w-10 h-10 rounded-full" />
-                    <span className="text-gray-700 dark:text-gray-300">{article.author_name}</span>
-                </div>
-            </div>
-            <p className="text-lg text-gray-700 dark:text-gray-200 mb-6">{article.content}</p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
-                    #{article.category}
-                </span>
-                {article.tags.map((tag, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
-                        #{tag}
-                    </span>
-                ))}
-            </div>
-
-            <div className="flex items-center gap-6 mb-4 text-gray-600 dark:text-gray-300">
-                <button onClick={handleLike} className="flex items-center gap-1 cursor-pointer hover:text-red-500">
-                    {liked ? <IoMdHeart className="text-red-500"/> : <FaRegHeart />} {likesCount}
-                </button>
-                <div className="flex items-center gap-1">
-                    <button className='flex gap-2 items-center cursor-pointer' onClick={handleComment}><FaRegComment /> {comments.length}</button>
-                </div>
-            </div>
-
-            {user && (
-                <div className="mb-4">
-                    <textarea
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                        placeholder="Write a comment..."
-                        className="w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-white"
+        <div className="max-w-7xl mx-auto p-4 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Left: Fixed Image */}
+                <div className="relative group md:sticky md:top-8 h-80 md:h-[600px] overflow-hidden rounded-2xl shadow-lg">
+                    <img
+                        src={article.thumbnail}
+                        alt={article.title}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
                     />
-                    <button
-                        onClick={handleCommentPost}
-                        className="mt-2 px-4 py-2 cursor-pointer bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
-                    >
-                        Post Comment
-                    </button>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-            )}
 
-            <div className="mt-6 space-y-4">
-                {comments.map((cmt, idx) => (
-                    <div key={idx} className="flex gap-3 items-start bg-gray-50 dark:bg-gray-800 p-3 rounded-xl">
-                        <img src={cmt.user_photo} alt="User" className="w-8 h-8 rounded-full" />
-                        <div>
-                            <p className="font-semibold text-gray-800 dark:text-white">{cmt.user_name}</p>
-                            <p className="text-sm text-gray-600 dark:text-gray-300">{cmt.comment}</p>
-                            <p className="text-xs text-gray-400 mt-1">{cmt.date}</p>
+                {/* Right: Details */}
+                <div className="backdrop-blur-xl bg-white/70 dark:bg-gray-900/70 p-6 rounded-2xl shadow-xl">
+                    <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-3">
+                        {article.title}
+                    </h1>
+                    <p className="text-sm text-gray-500 mb-4">{article.date}</p>
+
+                    {/* Author */}
+                    <div className="flex items-center gap-3 mb-6">
+                        <img src={article.author_photo} alt={article.author_name} className="w-12 h-12 rounded-full border-2 border-primary" />
+                        <span className="text-gray-700 dark:text-gray-300 font-medium">{article.author_name}</span>
+                    </div>
+
+                    {/* Content */}
+                    <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-6">
+                        {article.content}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                        <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-full text-sm shadow hover:scale-105 transition">
+                            #{article.category}
+                        </span>
+                        {article.tags.map((tag, idx) => (
+                            <span key={idx} className="px-3 py-1 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-full text-sm shadow hover:scale-105 transition">
+                                #{tag}
+                            </span>
+                        ))}
+                    </div>
+
+                    {/* Like & Comment Buttons */}
+                    <div className="flex items-center gap-6 text-gray-600 dark:text-gray-300 mb-6">
+                        <button
+                            onClick={handleLike}
+                            className="flex items-center gap-1 hover:text-red-500 transition"
+                        >
+                            {liked ? <IoMdHeart className="text-red-500" /> : <FaRegHeart />} {likesCount}
+                        </button>
+                        <div className="flex items-center gap-1">
+                            <FaRegComment /> {comments.length}
                         </div>
                     </div>
-                ))}
+
+                    {/* Comment Box */}
+                    {user && (
+                        <div className="mb-6">
+                            <textarea
+                                value={newComment}
+                                onChange={(e) => setNewComment(e.target.value)}
+                                placeholder="Write a comment..."
+                                className="w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-white focus:ring-2 focus:ring-primary focus:outline-none"
+                            />
+                            <button
+                                onClick={handleCommentPost}
+                                className="mt-3 px-5 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition"
+                            >
+                                Post Comment
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Comments List */}
+                    <div className="space-y-4">
+                        {comments.map((cmt, idx) => (
+                            <div key={idx} className="flex gap-3 items-start bg-gray-50 dark:bg-gray-800 p-3 rounded-xl">
+                                <img src={cmt.user_photo} alt="User" className="w-8 h-8 rounded-full" />
+                                <div>
+                                    <p className="font-semibold text-gray-800 dark:text-white">{cmt.user_name}</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-300">{cmt.comment}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
+
 
 export default ArticleDetails;

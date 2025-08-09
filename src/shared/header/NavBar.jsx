@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthProvider";
 import ThemeToggle from "../../components/themeToggle/ThemeToggle";
+import logo from '../../assets/logo1.png';
 import Swal from "sweetalert2";
 
 const Navbar = () => {
@@ -75,7 +76,7 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/aboutUs"
+                  to="/about"
                   className={({ isActive }) =>
                     isActive ? activeLinkClass : normalLinkClass
                   }
@@ -100,8 +101,8 @@ const Navbar = () => {
           <h1 className="flex items-center font-bold md:text-3xl select-none">
             <img
               className="w-20 mr-2"
-              src="logo1.png"
-              alt="Knowledge Hunt Logo"
+              src={logo}
+              alt=""
               loading="lazy"
             />
             Knowledge
@@ -134,7 +135,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/aboutUs"
+                to="/about"
                 className={({ isActive }) =>
                   isActive ? activeLinkClass : normalLinkClass
                 }

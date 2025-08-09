@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router"; // react-router-dom import
 import { motion } from "framer-motion";
+import logo from '../../assets/logo1.png';
 
 const Footer = () => {
   return (
@@ -15,7 +16,7 @@ const Footer = () => {
         {/* Logo & Description */}
         <div>
           <h2 className="text-xl lg:text-2xl font-bold mb-3 flex items-center gap-1 select-none">
-            <img src="logo1.png" alt="Knowledge Hunt Logo" className="w-12" />
+            <img src={logo} alt="Knowledge Hunt Logo" className="w-12" />
             Knowledge <span className="text-primary">Hunt</span>
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xs">
