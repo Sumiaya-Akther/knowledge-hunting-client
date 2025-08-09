@@ -87,7 +87,7 @@ const Profile = () => {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      to="/edit-profile"
+                      to="/dashboard/edit-profile"
                       className="flex items-center justify-center gap-3 text-accent hover:text-primary transition-colors duration-300"
                     >
                       <FaEdit className="text-xl" />
@@ -121,7 +121,7 @@ const Profile = () => {
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-2xl font-bold text-accent">Account Details</h3>
                 <Link
-                  to="/edit-profile"
+                  to="/dashboard/edit-profile"
                   className="btn btn-sm btn-primary text-primary-content normal-case"
                 >
                   <FaEdit /> Edit Profile

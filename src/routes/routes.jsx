@@ -25,6 +25,7 @@ import Report from "../pages/reportPage/Report";
 import Faq from "../pages/faqPage/Faq";
 import ForgotPassword from "../pages/forgetPass/ForgotPassword";
 import DashAllArticle from "../pages/dashAllArticle/DashAllArticle";
+import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 
 
 export const router = createBrowserRouter([
@@ -129,6 +130,12 @@ export const router = createBrowserRouter([
                 path: "profile",
                 element: <PrivateRoute>
                     <Profile></Profile>
+                </PrivateRoute>
+            },
+              {
+                path: "edit-profile",
+                element: <PrivateRoute>
+                    <UpdateProfile></UpdateProfile>
                 </PrivateRoute>
             },
             {
