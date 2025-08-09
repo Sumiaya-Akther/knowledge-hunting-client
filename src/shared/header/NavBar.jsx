@@ -97,7 +97,7 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <h1 className="flex items-center font-bold text-2xl md:text-3xl select-none">
+          <h1 className="flex items-center font-bold md:text-3xl select-none">
             <img
               className="w-20 mr-2"
               src="logo1.png"
@@ -105,7 +105,7 @@ const Navbar = () => {
               loading="lazy"
             />
             Knowledge
-            <span className="text-primary">Hunt</span>
+            <span className="text-primary hidden md:flex">Hunt</span>
           </h1>
         </div>
 

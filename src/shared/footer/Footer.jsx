@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & Description */}
         <div>
-          <h2 className="text-2xl font-bold mb-3 flex items-center gap-2 select-none">
+          <h2 className="text-xl lg:text-2xl font-bold mb-3 flex items-center gap-1 select-none">
             <img src="logo1.png" alt="Knowledge Hunt Logo" className="w-12" />
             Knowledge <span className="text-primary">Hunt</span>
           </h2>
