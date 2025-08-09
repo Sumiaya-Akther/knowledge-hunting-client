@@ -51,8 +51,8 @@ const Banner = () => {
 
             {/* Slide 2 */}
             <div className='relative'>
-                {/* <img className='max-w-full h-[570px] object-fill rounded-2xl' src="https://i.ibb.co/YFTgd8fQ/banner2.jpg" alt="" /> */}
-                <img className='w-full h-[570px] object-cover opacity-80 rounded-2xl' src={banner2} alt="Banner 2" />
+                <img className='max-w-full h-[570px] object-fill rounded-2xl' src="https://i.ibb.co/YFTgd8fQ/banner2.jpg" alt="" />
+                {/* <img className='w-full h-[570px] object-cover opacity-80 rounded-2xl' src={banner2} alt="Banner 2" /> */}
                 <div className='absolute rounded-2xl'></div>
                 <div className='absolute bottom-30 md:bottom-50 left-1/2 transform -translate-x-1/2 text-center text-black px-4 space-y-4'>
                  <h1 className="text-3xl md:text-4xl font-bold">
@@ -81,8 +81,8 @@ const Banner = () => {
 
             {/* Slide 3 */}
             <div className='relative'>
-                 {/* <img className='max-w-full h-[570px] object-fill rounded-2xl' src="https://i.ibb.co/h1fnQFrW/banner3.jpg" alt="" /> */}
-                <img className='w-full h-[570px] object-cover opacity-80 rounded-2xl' src={banner3} alt="Banner 3" />
+                 <img className='max-w-full h-[570px] object-fill rounded-2xl' src="https://i.ibb.co/h1fnQFrW/banner3.jpg" alt="" />
+                {/* <img className='w-full h-[570px] object-cover opacity-80 rounded-2xl' src={banner3} alt="Banner 3" /> */}
                 <div className='absolute  rounded-2xl'></div>
                 <div className='absolute bottom-30 md:bottom-50  left-1/2 transform -translate-x-1/2 text-center text-black px-4 space-y-4'>
                      <h1 className="text-3xl md:text-4xl font-bold">
