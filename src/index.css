@@ -13,14 +13,10 @@
     name: "light";
     default: true;
 
-    --color-primary: #4A90E2;
-    /* Bright Blue */
-    --color-secondary: #50E3C2;
-    /* Mint Green */
-    --color-accent: #1F2937;
-    /* Dark Gray - for text/accent */
-    --color-base-100: #F9FAFB;
-    /* Soft Off-White background */
+    --color-primary: #4A90E2;  /* Bright Blue */
+    --color-secondary: #f2b121; /* Warm Yellow/Orange — good! */
+    --color-accent: #1F2937;  /* Dark Gray - for text/accent */
+    --color-base-100: #F9FAFB; /* Soft Off-White background */
     --color-info: #2196F3;
     --color-error: #F44336;
 }
@@ -29,15 +25,11 @@
 @plugin "daisyui/theme" {
     name: "dark";
     default: false;
-    
-    --color-primary: #60A5FA;
-    /* Light Blue */
-    --color-secondary: #34D399;
-    /* Bright Green */
-    --color-accent: #F3F4F6;
-    /* Near White text/accent */
-    --color-base-100: #111827;
-    /* Deep Navy-Black background */
+
+    --color-primary: #60A5FA; /* Light Blue */
+    --color-secondary: #B45309; /* Dark Orange, good contrast */
+    --color-accent: #F3F4F6; /* Near White text/accent */
+    --color-base-100: #111827; /* Deep Navy-Black background */
     --color-info: #64B5F6;
     --color-error: #EF5350;
 }
