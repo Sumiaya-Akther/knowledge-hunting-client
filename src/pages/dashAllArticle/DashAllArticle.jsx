@@ -19,7 +19,7 @@ const DashAllArticle = () => {
         console.error("Failed to fetch featured articles:", error);
         setLoading(false);
       });
-  }, []);
+  }, [articles]);
 
     if (loading) {
     return <Loading></Loading>
@@ -66,3 +66,4 @@ const DashAllArticle = () => {
 };
 
 export default DashAllArticle;
+

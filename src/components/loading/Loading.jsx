@@ -18,7 +18,7 @@ const Loading = () => {
 
             {/* Loading Text */}
             <p className="mt-4 text-lg font-semibold text-primary animate-pulse">
-                Loading...
+                Loading, please wait...
             </p>
         </motion.div>
     );
