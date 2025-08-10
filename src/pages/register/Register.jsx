@@ -56,122 +56,98 @@ const Register = () => {
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center gap-10 my-8 md:my-2">
-      {/* Form Section */}
-      <div className="p-2 md:py-1 my-5 md:my-1">
-        <div className="flex flex-col w-full p-6 rounded-md sm:p-10 bg-cyan-500">
-          <div className="mb-8 text-center">
-            <h1 className="my-3 text-4xl font-bold">Register Now</h1>
-            <p className="text-sm dark:text-gray-600">
-              Register a new account
-            </p>
-          </div>
+  {/* Form Section */}
+  <div className="p-2 md:py-1 my-5 md:my-1 w-full max-w-md">
+    <div className="flex flex-col w-full p-6 rounded-xl shadow-lg bg-base-100 border border-gray-200">
+      <div className="mb-8 text-center">
+        <h1 className="my-3 text-4xl font-bold text-secondary">Register Now</h1>
+        <p className="text-sm text-accent">Create your new account</p>
+      </div>
 
-          <form onSubmit={handleSubmit} className="space-y-12">
-            <div className="space-y-4">
-              {/* Full Name */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block mb-2 text-sm text-black font-semibold"
-                >
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="userName"
-                  id="name"
-                  required
-                  placeholder="John Henry"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
-                />
-              </div>
-
-              {/* Photo URL */}
-              <div>
-                <label
-                  htmlFor="photo"
-                  className="block mb-2 text-sm text-black font-semibold"
-                >
-                  User Picture
-                </label>
-                <input
-                  type="url"
-                  name="photo"
-                  id="photo"
-                  required
-                  placeholder="Photo URL..."
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm text-black font-semibold"
-                >
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  name="userEmail"
-                  id="email"
-                  placeholder="leroy@jenkins.com"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
-                />
-              </div>
-
-              {/* Password */}
-              <div>
-                <div className="flex justify-between mb-2">
-                  <label
-                    htmlFor="password"
-                    className="text-sm text-black font-semibold"
-                  >
-                    Password
-                  </label>
-                </div>
-                <input
-                  type="password"
-                  name="password"
-                  required
-                  id="password"
-                  placeholder="*****"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
-                />
-                {nameError && (
-                  <p className="text-sm text-error mt-1">{nameError}</p>
-                )}
-              </div>
-            </div>
-
-            {/* Buttons */}
-            <div className="space-y-2">
-              <button
-                type="submit"
-                className="w-full btn bg-black text-white px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
-              >
-                Register Now
-              </button>
-              <p className="px-6 text-sm text-center dark:text-gray-600 text-black">
-                Already have an account?{" "}
-                <NavLink
-                  to="/login"
-                  className="hover:underline font-semibold dark:text-violet-600"
-                >
-                  Login
-                </NavLink>
-              </p>
-            </div>
-          </form>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Full Name */}
+        <div>
+          <label className="block mb-2 text-sm font-semibold text-secondary">
+            Full Name
+          </label>
+          <input
+            type="text"
+            name="userName"
+            required
+            placeholder="John Henry"
+            className={`input input-bordered w-full ${nameError && "input-error"}`}
+          />
         </div>
-      </div>
 
-      {/* Animation Section */}
-      <div className="p-2">
-        <Lottie animationData={registerLotti} loop={true} />
-      </div>
+        {/* Photo URL */}
+        <div>
+          <label className="block mb-2 text-sm font-semibold text-secondary">
+            User Picture
+          </label>
+          <input
+            type="url"
+            name="photo"
+            required
+            placeholder="Photo URL..."
+            className="input input-bordered w-full"
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block mb-2 text-sm font-semibold text-secondary">
+            Email address
+          </label>
+          <input
+            type="email"
+            name="userEmail"
+            required
+            placeholder="example@email.com"
+            className="input input-bordered w-full"
+          />
+        </div>
+
+        {/* Password */}
+        <div>
+          <label className="block mb-2 text-sm font-semibold text-secondary">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            required
+            placeholder="******"
+            className={`input input-bordered w-full ${nameError && "input-error"}`}
+          />
+          {nameError && <p className="text-sm text-error mt-1">{nameError}</p>}
+        </div>
+
+        {/* Buttons */}
+        <button
+          type="submit"
+          className="btn btn-primary w-full text-white"
+        >
+          Register Now
+        </button>
+        <p className="text-center text-sm text-accent">
+          Already have an account?{" "}
+          <NavLink
+            to="/login"
+            className="text-primary font-semibold hover:underline"
+          >
+            Login
+          </NavLink>
+        </p>
+      </form>
     </div>
+  </div>
+
+  {/* Animation Section */}
+  <div className="p-2 w-full md:w-1/2 flex justify-center">
+    <Lottie animationData={registerLotti} loop />
+  </div>
+</div>
+
   );
 };
 
