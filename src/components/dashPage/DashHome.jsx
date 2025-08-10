@@ -1,9 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-
 import StatsCard from '../statsCard/StatsCard';
 import { FaUsers, FaUserCheck } from "react-icons/fa";
-import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
+
+// Recharts imports
+import {
+    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
+    PieChart, Pie, Cell
+} from 'recharts';
+import { AuthContext } from '../../provider/AuthProvider';
+
+const COLORS = ["#00b8db", "#10b981", "#6366f1", "#f97316"];
 
 const DashHome = () => {
     const { user } = useContext(AuthContext);
@@ -35,6 +42,17 @@ const DashHome = () => {
         }
     }, [user?.email]);
 
+    // Chart Data
+    const barData = [
+        { name: 'Total Groups', value: stats.total },
+        { name: 'My Groups', value: stats.mine },
+    ];
+
+    const pieData = [
+        { name: 'Total Groups', value: stats.total },
+        { name: 'My Groups', value: stats.mine },
+    ];
+
     return (
         <section className="space-y-8">
             {/* user greeting */}
@@ -60,6 +78,46 @@ const DashHome = () => {
                     count={stats.mine}
                     icon={<FaUserCheck className="text-3xl text-emerald-500" />}
                 />
+            </div>
+
+            {/* charts */}
+            <div className="grid md:grid-cols-2 gap-6">
+                {/* Bar Chart */}
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+                    <h3 className="text-lg font-semibold mb-4">Groups Overview</h3>
+                    <ResponsiveContainer width="100%" height={250}>
+                        <BarChart data={barData}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="value" fill="#00b8db" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+
+                {/* Pie Chart */}
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+                    <h3 className="text-lg font-semibold mb-4">Groups Distribution</h3>
+                    <ResponsiveContainer width="100%" height={250}>
+                        <PieChart>
+                            <Pie
+                                data={pieData}
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={80}
+                                dataKey="value"
+                                label
+                            >
+                                {pieData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                ))}
+                            </Pie>
+                            <Tooltip />
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div>
             </div>
         </section>
     );
